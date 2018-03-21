@@ -1,4 +1,4 @@
-# ProjetoCEEm
+# CEEM - Consumo de Energia Elétrica Monitorado
 
 O que é?
 ---
