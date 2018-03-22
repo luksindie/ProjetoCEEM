@@ -14,8 +14,8 @@ namespace ProjetoCEEM.Models
         public string Descricao { get; set; }
 
         // Chaves Estrangeiras
-        public int PreCadastroId { get; set; }
-        public int UsuarioId { get; set; }
+        public int? PreCadastroId { get; set; }
+        public int? UsuarioId { get; set; }
         public int TipoContatoId { get; set; }
 
         // Classes Virtuais

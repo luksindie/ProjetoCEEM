@@ -16,10 +16,12 @@ namespace ProjetoCEEM.Models
         public string Bairro { get; set; }
         public string Cidade { get; set; }
         public string Uf { get; set; }
+        public string NumeroCasa { get; set; }
+        public DateTime? DataAlteracao { get; set; }
 
         // Chaves Estrangeiras
-        public int UsuarioId { get; set; }
-        public int PreCadastroId { get; set; }
+        public int? UsuarioId { get; set; }
+        public int? PreCadastroId { get; set; }
 
         // Classes Virtuais
         public Usuario Usuario { get; set; }

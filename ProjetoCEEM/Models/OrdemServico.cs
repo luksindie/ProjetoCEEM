@@ -12,18 +12,18 @@ namespace ProjetoCEEM.Models
         public int OrdemServicoId { get; set; }
 
         public DateTime DataCadastro { get; set; }
-        public DateTime DataAlteracao { get; set; }
+        public DateTime? DataAlteracao { get; set; }
 
         // Chaves Estrangeiras
-        public int UsuarioId { get; set; }
-        public int TecnicoId { get; set; }
+        public int? UsuarioId { get; set; }
+        public int? TecnicoId { get; set; }
         public int StatusOrdemServicoId { get; set; }
+        public int? PreCadastroId { get; set; }
 
         // Classes Virtuais
         public virtual Usuario Usuario { get; set; }
         public virtual Usuario Tecnico { get; set; }
         public virtual StatusOrdemServico StatusOrdemServico { get; set; }
-
-
+        public virtual PreCadastro PreCadastro { get; set; }
     }
 }

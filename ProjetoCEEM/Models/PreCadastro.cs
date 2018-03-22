@@ -14,11 +14,5 @@ namespace ProjetoCEEM.Models
         public string NomeCadastro { get; set; }
         public DateTime DataCriacao { get; set; }
         public Guid CodigoPreCadastro { get; set; }
-
-        // Chaves Estrangeiras
-        public int OrdemServicoId { get; set; }
-
-        // Classes Virtuais
-        public virtual OrdemServico OrdemServico { get; set; }
     }
 }
