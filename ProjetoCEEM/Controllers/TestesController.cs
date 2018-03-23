@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using ProjetoCEEM.ViewModels;
 using ProjetoCEEM.Models;
+using ProjetoCEEM.Services;
 
 namespace ProjetoCEEM.Controllers
 {
@@ -33,15 +34,15 @@ namespace ProjetoCEEM.Controllers
         [HttpPost]
         public ActionResult CreatePreCadastro(PreCadastroViewModel preCadastroViewModel)
         {
-            
+
             if (ModelState.IsValid)
             {
                 var codigo = Guid.NewGuid();
-                PreCadastro preCadastro = new PreCadastro { DataCriacao = DateTime.Now,NomeCadastro = preCadastroViewModel.NomeCadastro,CodigoPreCadastro = codigo};
+                PreCadastro preCadastro = new PreCadastro { DataCriacao = DateTime.Now, NomeCadastro = preCadastroViewModel.NomeCadastro, CodigoPreCadastro = codigo };
                 db.PreCadastros.Add(preCadastro);
                 preCadastro.CodigoPreCadastro = codigo;
-                OrdemServico ordemServico = new OrdemServico {DataCadastro = preCadastro.DataCriacao,PreCadastroId = preCadastro.PreCadastroId,StatusOrdemServicoId = 1};
-                Contato contato = new Contato {Descricao = preCadastroViewModel.Email,TipoContatoId = 1,PreCadastroId = 0};
+                OrdemServico ordemServico = new OrdemServico { DataCadastro = preCadastro.DataCriacao, PreCadastroId = preCadastro.PreCadastroId, StatusOrdemServicoId = 1 };
+                Contato contato = new Contato { Descricao = preCadastroViewModel.Email, TipoContatoId = 1, PreCadastroId = 0 };
                 Endereco endereco = new Endereco
                 {
                     Bairro = preCadastroViewModel.Bairro,
@@ -55,8 +56,13 @@ namespace ProjetoCEEM.Controllers
                 db.OrdemServicos.Add(ordemServico);
                 db.Contatos.Add(contato);
                 db.Enderecos.Add(endereco);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (EmailService.EnviarEmail(preCadastroViewModel.Email, "teste", "Batata"))
+                {
+                    ModelState.AddModelError("Email", EmailService.Msg);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                ModelState.AddModelError("Email", string.Concat(EmailService.Msg, ", Erro: ", EmailService.MsgError));
             }
             return View(preCadastroViewModel);
         }

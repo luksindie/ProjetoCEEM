@@ -15,8 +15,6 @@ namespace ProjetoCEEM.Models
         public DateTime? DataAlteracao { get; set; }
 
         // Chaves Estrangeiras
-        public int? UsuarioId { get; set; }
-        public int? TecnicoId { get; set; }
         public int StatusOrdemServicoId { get; set; }
         public int? PreCadastroId { get; set; }
 

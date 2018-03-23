@@ -21,7 +21,6 @@ namespace ProjetoCEEM.Models
         // Chaves Estrangeiras
         public int PerfilId {get;set;}
         public int StatusUsuarioId {get;set;}
-        public int OrdemServicoId {get;set;}
         public int MotivoInativacaoId {get;set;}
         public int PreCadastroId {get;set;}
 
@@ -29,7 +28,6 @@ namespace ProjetoCEEM.Models
         public virtual StatusUsuario StatusUsuario { get; set; }
         public virtual MotivoInativacao MotivoInativacao { get; set; }
         public virtual PreCadastro PreCadastro { get; set; }
-        public virtual OrdemServico OrdemServico { get; set; }
         public virtual Perfil Perfil { get; set; }
 
         public Boolean EmailDisponivel(Context db)
