@@ -30,12 +30,12 @@ namespace ProjetoCEEM.Models
         public virtual PreCadastro PreCadastro { get; set; }
         public virtual Perfil Perfil { get; set; }
 
-        public Boolean EmailDisponivel(Context db)
+        public bool EmailDisponivel(Context db)
         {
             return false;
         }
 
-        public Boolean NomeUsuarioDisponivel(Context db)
+        public bool NomeUsuarioDisponivel(Context db)
         {
             return false;
         }
